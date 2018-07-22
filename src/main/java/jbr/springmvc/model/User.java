@@ -1,12 +1,47 @@
 package jbr.springmvc.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+ 
+import org.hibernate.annotations.Type;
+
+@Entity
+@Table(name="users")
 public class User {
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Column(name = "ID")
+    private int id;
+
+  @Column(name = "username", nullable = false)	
   private String username;
+  @Column(name = "password", nullable = false)	
   private String password;
+  @Column(name = "firstname", nullable = false)	
   private String firstname;
+  @Column(name = "lastname", nullable = false)	
   private String lastname;
+  @Column(name = "email", nullable = false)	
   private String email;
+  @Column(name = "address", nullable = false)	
   private String address;
+  @Column(name = "phone", nullable = false)	
   private int phone;
+  
+  
+  public int getId() {
+      return id;
+  }
+
+  public void setId(int id) {
+      this.id = id;
+  }
+  
   public String getUsername() {
   return username;
   }
