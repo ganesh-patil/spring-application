@@ -83,9 +83,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
        
       http.authorizeRequests()
         .antMatchers("/login").permitAll()
-        .antMatchers("/welcome1").access("hasAuthority('ROLE_USER')")
-              .antMatchers("/file_upload").access("hasAuthority('ROLE_USER')")
-              .antMatchers("/fileProcess").access("hasAuthority('ROLE_USER')")
+              .antMatchers("/*").access("hasAuthority('ROLE_USER')")
+//        .antMatchers("/welcome1").access("hasAuthority('ROLE_USER')")
+//              .antMatchers("/file_upload").access("hasAuthority('ROLE_USER')")
+//              .antMatchers("/fileProcess").access("hasAuthority('ROLE_USER')")
         .and().formLogin().loginPage("/login").defaultSuccessUrl("/welcome1")
         .usernameParameter("ssoId").passwordParameter("password")
         .and().csrf()

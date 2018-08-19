@@ -11,6 +11,7 @@
     <mvc:resources mapping="/resources/**" location="/resources/" /> 
     <context:component-scan base-package="jbr.springmvc" />
     <context:annotation-config />
+    <context:property-placeholder location="classpath*:application.properties"/>
     <tx:annotation-driven transaction-manager="txManager"/> 
      <!--  <bean id="userService" class="jbr.springmvc.service.UserService" />  -->
     <bean id="userDao" class="jbr.springmvc.dao.UserDaoImpl" />
@@ -60,6 +61,29 @@
  
     <bean id="persistenceExceptionTranslationPostProcessor"
         class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+    <bean id="connectionFactoryLocator" class="org.springframework.social.connect.support.ConnectionFactoryRegistry">
+        <property name="connectionFactories">
+            <list>
+                <bean class="org.springframework.social.twitter.connect.TwitterConnectionFactory">
+                    <constructor-arg value="${twitter.consumerKey}" />
+                    <constructor-arg value="${twitter.consumerSecret}" />
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <bean id="tweeter" class="org.springframework.social.twitter.api.impl.TwitterTemplate">
+  <!--      <constructor-arg value="z8zTGKlBhIBK9Eanhr2ROJRWc" />
+        <constructor-arg value="tQ0QID5WJyILAQTd2k0tloXStvDhnrQyFI94ezYtDTCTRnHtHM" />
+        <constructor-arg value="1346371116-coFKpQKdVVNeb7sSG4ahMJelbypu3Pe50fzgN9s" />
+        <constructor-arg value="GWS4UosEsG5iK9zlP6vWkkqmJye3VteBuDIuQXtxINQV3" />-->
+
+        <constructor-arg value="${twitter.consumerKey}" />
+        <constructor-arg value="${twitter.consumerSecret}" />
+        <constructor-arg value="${twitter.accessToken}" />
+        <constructor-arg value="${twitter.accessTokenSecret}" />
+
+    </bean>
          
 </beans>
    
