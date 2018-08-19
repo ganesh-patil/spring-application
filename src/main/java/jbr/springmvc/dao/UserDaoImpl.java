@@ -29,6 +29,10 @@ public class UserDaoImpl implements UserDao {
 	    List<User> users = null;
 	    return users.size() > 0 ? users.get(0) : null;
 	    }
+		public List<User> getAllUsers() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 	    
 }
 

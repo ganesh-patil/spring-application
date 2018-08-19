@@ -3,6 +3,9 @@
     <import resource="classpath:jbr/config/user-beans.xml" />
     <context:component-scan base-package="jbr.springmvc" />
     <context:annotation-config />
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+    </bean>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/jsp/" />
         <property name="suffix" value=".jsp" />

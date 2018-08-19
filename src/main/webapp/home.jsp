@@ -1,18 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-    <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Welcome</title>
-    </head>
-    <body>
-        <table align="center">
-            <tr>
-                <td><a href="login">Login</a>
-                </td>
-                <td><a href="register">Register</a>
-                </td>
-            </tr>
-        </table>
-    </body>
-    </html>
+<%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %>  
+<rapid:override name="content">  
+     <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Spring application</h1>
+          <p class="lead text-muted">Sample spring application</p>
+          <p>
+            <a href="login" class="btn btn-primary my-2">Login</a>
+            <a href="register" class="btn btn-secondary my-2">Register</a>
+          </p>
+        </div>
+      </section>
+
+
+    </main>
+</rapid:override>  
+
+
+<jsp:include page="base.jsp" flush="true" >
+        <jsp:param name="Command" value="test"/>
+</jsp:include>
+
+
+   

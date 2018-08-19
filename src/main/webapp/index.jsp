@@ -14,7 +14,7 @@
 
 	<p>
       Hello <b><c:out value="${pageContext.request.remoteUser}"/></b><br>
-      Roles: <b><sec:authentication property="principal.authorities" /></b>
+ 
     </p>
     
     <form action="logout" method="post">

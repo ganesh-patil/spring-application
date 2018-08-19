@@ -1,17 +1,24 @@
 package jbr.springmvc.model;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
- 
+import javax.validation.constraints.Size;
+
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name="users")
-public class User {
+public class User  implements UserDetails, Comparable{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,14 +26,17 @@ public class User {
     private int id;
 
   @Column(name = "username", nullable = false)	
+  @NotEmpty(message = "Please enter username")
   private String username;
   @Column(name = "password", nullable = false)	
+  @NotEmpty
   private String password;
   @Column(name = "firstname", nullable = false)	
   private String firstname;
   @Column(name = "lastname", nullable = false)	
   private String lastname;
   @Column(name = "email", nullable = false)	
+  @Email(message = "This is invalid email")
   private String email;
   @Column(name = "address", nullable = false)	
   private String address;
@@ -84,4 +94,38 @@ public class User {
   public void setPhone(int phone) {
   this.phone = phone;
   }
+
+public Collection<? extends GrantedAuthority> getAuthorities() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+public boolean isAccountNonExpired() {
+	// TODO Auto-generated method stub
+	return false;
+}
+
+public boolean isAccountNonLocked() {
+	// TODO Auto-generated method stub
+	return false;
+}
+
+public boolean isCredentialsNonExpired() {
+	// TODO Auto-generated method stub
+	return false;
+}
+
+public boolean isEnabled() {
+	// TODO Auto-generated method stub
+	return false;
+}
+
+public int compareTo(Object o) {
+	// TODO Auto-generated method stub
+	User newUser  = (User) o;
+	if(this.id < newUser.id) {
+		return 1;
+	}
+	return -1;
+}
 }

@@ -1,19 +1,17 @@
+<%@ taglib uri="http://www.rapid-framework.org.cn/rapid" prefix="rapid" %>  
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<rapid:override name="content">  
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-    <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-        <html>
-        <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-            <title>Registration</title>
-        </head>
-        <body>
-            <form:form id="regForm" modelAttribute="user" action="registerProcess" method="post">
+     <form:form id="regForm" modelAttribute="user" action="registerProcess" method="post">
                 <table align="center">
                     <tr>
                         <td>
                             <form:label path="username">Username</form:label>
+                           
                         </td>
                         <td>
                             <form:input path="username" name="username" id="username" />
+                            <form:errors path="username" cssClass="error" />
                         </td>
                     </tr>
                     <tr>
@@ -43,6 +41,7 @@
                     <tr>
                         <td>
                             <form:label path="email">Email</form:label>
+                            <form:errors path="email" cssClass="error" />
                         </td>
                         <td>
                             <form:input path="email" name="email" id="email" />
@@ -78,5 +77,9 @@
                     </tr>
                 </table>
             </form:form>
-        </body>
-        </html>
+</rapid:override>  
+
+
+<jsp:include page="/base.jsp" flush="true" >
+        <jsp:param name="Command" value="test"/>
+</jsp:include>
