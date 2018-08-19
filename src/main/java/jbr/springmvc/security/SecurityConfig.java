@@ -82,7 +82,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
        
       http.authorizeRequests()
-        .antMatchers("/login").permitAll()
+        .antMatchers("/login", "/register", "/home.jsp","/registerProcess").permitAll()
               .antMatchers("/*").access("hasAuthority('ROLE_USER')")
 //        .antMatchers("/welcome1").access("hasAuthority('ROLE_USER')")
 //              .antMatchers("/file_upload").access("hasAuthority('ROLE_USER')")
