@@ -1,13 +1,9 @@
 package jbr.springmvc.model;
 
 import java.util.Collection;
+import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Type;
@@ -15,6 +11,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import jbr.springmvc.model.User;
 
 @Entity
 @Table(name="users")
@@ -42,6 +39,9 @@ public class User  implements UserDetails, Comparable{
   private String address;
   @Column(name = "phone", nullable = false)	
   private int phone;
+
+  @OneToMany(mappedBy = "user")
+  private Set<Entries> entries;
   
   
   public int getId() {
@@ -93,6 +93,14 @@ public class User  implements UserDetails, Comparable{
   }
   public void setPhone(int phone) {
   this.phone = phone;
+  }
+
+  public Set<Entries> getEntries() {
+    return entries;
+  }
+
+  public void setEntries(Set<Entries> entries) {
+    this.entries = entries;
   }
 
 public Collection<? extends GrantedAuthority> getAuthorities() {

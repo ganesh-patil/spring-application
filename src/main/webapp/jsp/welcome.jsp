@@ -7,10 +7,11 @@
             <div class="col-md-3 offset-1"> <a href="users" class="btn btn-primary">List all users</a> </div>
             <div class="col-md-3 offset-1"> <a href="file_upload" class="btn btn-primary"> New file upload</a> </div>
             <div class="col-md-3 offset-1"> <a href="files" class="btn btn-primary"> List all files</a></div>
-
         </div>
         <div class="row form-group">
             <div class="col-md-3 offset-1"> <a href="fetchTweets" class="btn btn-primary"> See Tweets</a></div>
+            <div class="col-md-3 offset-1"> <a href="entries" class="btn btn-primary"> List all Entries</a></div>
+            <div class="col-md-3 offset-1"> <a href="entry/new" class="btn btn-primary"> Add new entry</a></div>
         </div>
     </div>
 </rapid:override>  

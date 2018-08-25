@@ -51,9 +51,15 @@
           </button>
         </div>
       </div>
-    </header> 
+    </header>
+    <c:if test="${error != null}">
+        <div class="alert alert-danger">
+            <p>${error}</p>
+        </div>
+    </c:if>
     
         <rapid:block name="content">
+
             
         </rapid:block>  
         

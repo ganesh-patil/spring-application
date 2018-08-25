@@ -20,7 +20,9 @@
      <bean id="userHiberService" class="jbr.springmvc.service.UserHiberService" />
     <bean id="fileOperationsHiberService" class="jbr.springmvc.service.FileOperationsHiberService" />
     <bean id="userHiberDao" class="jbr.springmvc.dao.UserHiberDaoImpl" />
+    <bean id="entriesDao" class="jbr.springmvc.dao.EntriesHiberDaoImpl" />
     <bean id="fileOperationsDao" class="jbr.springmvc.dao.FileOperationsHiberDaoImpl" />
+    <bean id="entriesHiberService" class="jbr.springmvc.service.EntriesHiberService" />
     
     <bean id="appUserDetailsServiceDAO" class="jbr.springmvc.service.AppUserDetailsServiceDAO" /> 
     

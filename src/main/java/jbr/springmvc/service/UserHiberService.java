@@ -30,6 +30,10 @@ public class UserHiberService {
 		return userHiberDaoImpl.getAllUsers();
 	}
 
+	public User getUserByUserName(String userName){
+		return userHiberDaoImpl.getUserByUserName(userName);
+	}
+
 	
 	
 

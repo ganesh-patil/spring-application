@@ -43,7 +43,6 @@ public class UserHiberDaoImpl implements UserDao {
 	  Criteria criteria = sessionFactory.openSession().createCriteria(User.class);
 	  User userdetails = (User) criteria.add(Restrictions.eq("username", userName))
 	                             .uniqueResult();
-	  System.out.println(userdetails);
 	  return userdetails;
   }
 public List<User> getAllUsers() {
