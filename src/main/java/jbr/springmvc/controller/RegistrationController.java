@@ -14,12 +14,20 @@ import org.springframework.web.servlet.ModelAndView;
 import jbr.springmvc.model.User;
 import jbr.springmvc.service.UserHiberService;
 import jbr.springmvc.service.UserService;
+
+import java.util.List;
+
 @Controller
 public class RegistrationController {
    @Autowired
   public UserHiberService userService;
   @RequestMapping(value = "/register", method = RequestMethod.GET)
   public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response) {
+      List test = userService.getTestList();
+      test.add(100);
+      test.add(105);
+      userService.setTestList(test);
+      System.out.println(userService.getTestList());
     ModelAndView mav = new ModelAndView("register");
     mav.addObject("user", new User());
     return mav;

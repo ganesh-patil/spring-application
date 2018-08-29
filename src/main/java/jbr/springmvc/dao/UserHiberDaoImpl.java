@@ -51,6 +51,14 @@ public List<User> getAllUsers() {
 	Collections.sort(users);
 	return users;
 }
+
+    public void deleteUser(int userId) {
+        Session session = this.sessionFactory.getCurrentSession();
+        User user = (User) session.load(User.class, new Integer(userId));
+        if(null != user){
+            session.delete(user);
+        }
+    }
 	    
 }
 

@@ -11,6 +11,8 @@
 		<th width="120">Firstname</th>
 		<th width="60">Lastname</th>
 		<th width="60">Email</th>
+        <th width="60">Actions</th>
+
 	</tr>
 
     <c:forEach items="${users}" var="user">
@@ -20,6 +22,7 @@
             <td> <c:out value="${user.firstname}"/></td>
             <td> <c:out value="${user.lastname}"/></td>
             <td> <c:out value="${user.email}"/></td>
+            <td> <a href="/delete/${user.id}" class="btn btn-danger"> Delete</a></td>
         </tr>
     </c:forEach>
 </table>

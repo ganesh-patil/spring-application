@@ -40,7 +40,7 @@ public class User  implements UserDetails, Comparable{
   @Column(name = "phone", nullable = false)	
   private int phone;
 
-  @OneToMany(mappedBy = "user")
+  @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
   private Set<Entries> entries;
   
   

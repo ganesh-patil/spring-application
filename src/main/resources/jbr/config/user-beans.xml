@@ -17,7 +17,13 @@
     <bean id="userDao" class="jbr.springmvc.dao.UserDaoImpl" />
 
     
-     <bean id="userHiberService" class="jbr.springmvc.service.UserHiberService" />
+    <bean id="userHiberService" class="jbr.springmvc.service.UserHiberService" scope="singleton">
+        <property name = "testList">
+        <list>
+            <value>1</value>
+        </list>
+        </property>
+    </bean>
     <bean id="fileOperationsHiberService" class="jbr.springmvc.service.FileOperationsHiberService" />
     <bean id="userHiberDao" class="jbr.springmvc.dao.UserHiberDaoImpl" />
     <bean id="entriesDao" class="jbr.springmvc.dao.EntriesHiberDaoImpl" />

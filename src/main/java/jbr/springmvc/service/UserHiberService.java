@@ -18,6 +18,17 @@ import jbr.springmvc.model.User;
 
 @Transactional
 public class UserHiberService {
+
+
+	public List getTestList() {
+		return testList;
+	}
+
+	public void setTestList(List testList) {
+		this.testList = testList;
+	}
+
+	public List testList;
 	@Autowired
 	UserHiberDaoImpl userHiberDaoImpl;
 	
@@ -32,6 +43,10 @@ public class UserHiberService {
 
 	public User getUserByUserName(String userName){
 		return userHiberDaoImpl.getUserByUserName(userName);
+	}
+
+	public void deleteUser(int userId){
+		userHiberDaoImpl.deleteUser(userId);
 	}
 
 	
