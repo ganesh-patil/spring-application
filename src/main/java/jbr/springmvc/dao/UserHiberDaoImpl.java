@@ -52,11 +52,14 @@ public List<User> getAllUsers() {
 	return users;
 }
 
-    public void deleteUser(int userId) {
+    public void deleteUser(int userId)  throws Exception {
         Session session = this.sessionFactory.getCurrentSession();
         User user = (User) session.load(User.class, new Integer(userId));
         if(null != user){
             session.delete(user);
+        }
+        else {
+            throw new Exception("Invalid user id ");
         }
     }
 	    

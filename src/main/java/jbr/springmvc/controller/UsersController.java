@@ -35,7 +35,7 @@ public class UsersController {
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public ModelAndView deleteUser(@PathVariable("id") int userId){
+	public ModelAndView deleteUser(@PathVariable("id") int userId) throws Exception{
 		userService.deleteUser(userId);
 		return new ModelAndView("redirect:/users");
 	}

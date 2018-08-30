@@ -45,7 +45,7 @@ public class UserHiberService {
 		return userHiberDaoImpl.getUserByUserName(userName);
 	}
 
-	public void deleteUser(int userId){
+	public void deleteUser(int userId) throws  Exception{
 		userHiberDaoImpl.deleteUser(userId);
 	}
 
