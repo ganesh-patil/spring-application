@@ -13,6 +13,11 @@
             <div class="col-md-3 offset-1"> <a href="entries" class="btn btn-primary"> List all Entries</a></div>
             <div class="col-md-3 offset-1"> <a href="entry/new" class="btn btn-primary"> Add new entry</a></div>
         </div>
+
+        <div class="row form-group">
+            <div class="col-md-3 offset-1"> <a href="getQuotes" class="btn btn-primary"> APis data</a></div>
+
+        </div>
     </div>
 </rapid:override>  
 

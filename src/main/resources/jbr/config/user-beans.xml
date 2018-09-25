@@ -92,6 +92,9 @@
         <constructor-arg value="${twitter.accessTokenSecret}" />
 
     </bean>
+
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" >
+    </bean>
          
 </beans>
    
