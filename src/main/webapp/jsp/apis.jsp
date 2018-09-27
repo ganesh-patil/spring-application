@@ -6,18 +6,20 @@
  <div class="text-center">
 <table class="table">
    <tr>
-		<th width="80">QuoteDetails</th>
+		<th width="80">Rates</th>
 	</tr>
 
-
-    <tr>
-        <td> <c:out value="${Quote.type}"/></td>
-    </tr>
-    <tr>
-        <td> <c:out value="${Quote.value.quote}"/></td>
-    </tr>
-
-
+    <c:forEach items="${Rates}" var="Rate">
+        <tr>
+            <td> <c:out value="${Rate.name}"/></td>
+        </tr>
+        <tr>
+            <td> <c:out value="${Rate.code}"/></td>
+        </tr>
+        <tr>
+            <td> <c:out value="${Rate.rate}"/></td>
+        </tr>
+    </c:forEach>
 
 </table>
 </div>
