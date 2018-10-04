@@ -1,5 +1,6 @@
 package jbr.springmvc.dao;
 
+import jbr.springmvc.controller.apis.EntryNotFoundException;
 import jbr.springmvc.model.Entries;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -32,6 +33,10 @@ public class EntriesHiberDaoImpl implements EntriesDao {
     public  void deleteEntry(int entryId){
         Session session = sessionFactory.openSession();
         Entries entry =  (Entries) session.get(Entries.class, entryId);
+        if(entry == null){
+            session.close();
+            throw new EntryNotFoundException("Entry with id"+entryId+ "Not found");
+        }
         session.delete(entry);
         session.flush();
         session.close();
