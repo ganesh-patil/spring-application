@@ -41,7 +41,27 @@
         <property name="username" value="root" />
         <property name="password" value="" />  
         
-       </bean> 
+       </bean>
+
+    <bean id="mailService" class="jbr.springmvc.service.MailService" />
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.sendgrid.net" />
+        <property name="port" value="587" />
+        <property name="username" value="apikey" />
+        <property name="password" value="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" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+            </props>
+
+
+        </property>
+
+    </bean>
         
      
      

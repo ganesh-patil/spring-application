@@ -52,6 +52,7 @@ public class EntriesController {
         User user   = userHiberService.getUserByUserName(userName);
         entry.setUser(user);
         entriesHiberService.addEntry(entry);
+        entriesHiberService.sendEntryDetails(entry);
         mav = new ModelAndView("redirect:/entries");
         redirectAttributes.addFlashAttribute("success", "Entry added successfully");
 

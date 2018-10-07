@@ -3,10 +3,15 @@ package jbr.springmvc.service;
 import jbr.springmvc.dao.EntriesHiberDaoImpl;
 import jbr.springmvc.model.Entries;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.util.List;
 
 public class EntriesHiberService {
+
+    @Autowired
+    private MailService mailService;
     @Autowired
     private EntriesHiberDaoImpl entriesDao;
 
@@ -27,6 +32,12 @@ public class EntriesHiberService {
 
     public void deleteEntry(int entryId){
         entriesDao.deleteEntry(entryId);
+    }
+
+
+    @Async
+    public void sendEntryDetails(Entries entry) {
+        mailService.sendEmail(entry);
     }
 
 
