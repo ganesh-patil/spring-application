@@ -39,8 +39,7 @@
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
         <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:spring" />
         <property name="username" value="system" />
-        <property name="password" value="apttus1234" />
-           <!--<property name="dialect" value="apttus1234" />-->
+        <property name="password" value="passwordhere" />
         
        </bean>
 
