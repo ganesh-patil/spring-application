@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" 
-       xmlns:context="http://www.springframework.org/schema/context" 
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation=" http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
-       >
-    <mvc:annotation-driven />  
+>
+    <mvc:annotation-driven />
     <mvc:default-servlet-handler/>
-    <mvc:resources mapping="/resources/**" location="/resources/" /> 
+    <mvc:resources mapping="/resources/**" location="/resources/" />
     <context:component-scan base-package="jbr.springmvc" />
     <context:annotation-config />
     <context:property-placeholder location="classpath*:application.properties"/>
-    <tx:annotation-driven transaction-manager="txManager"/> 
-     <!--  <bean id="userService" class="jbr.springmvc.service.UserService" />  -->
+    <tx:annotation-driven transaction-manager="txManager"/>
+    <!--  <bean id="userService" class="jbr.springmvc.service.UserService" />  -->
     <bean id="userDao" class="jbr.springmvc.dao.UserDaoImpl" />
 
-    
+
     <bean id="userHiberService" class="jbr.springmvc.service.UserHiberService" scope="singleton">
         <property name = "testList">
-        <list>
-            <value>1</value>
-        </list>
+            <list>
+                <value>1</value>
+            </list>
         </property>
     </bean>
     <bean id="fileOperationsHiberService" class="jbr.springmvc.service.FileOperationsHiberService" />
@@ -29,9 +29,9 @@
     <bean id="entriesDao" class="jbr.springmvc.dao.EntriesHiberDaoImpl" />
     <bean id="fileOperationsDao" class="jbr.springmvc.dao.FileOperationsHiberDaoImpl" />
     <bean id="entriesHiberService" class="jbr.springmvc.service.EntriesHiberService" />
-    
-    <bean id="appUserDetailsServiceDAO" class="jbr.springmvc.service.AppUserDetailsServiceDAO" /> 
-    
+
+    <bean id="appUserDetailsServiceDAO" class="jbr.springmvc.service.AppUserDetailsServiceDAO" />
+
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="datasource" />
     </bean>
@@ -39,7 +39,7 @@
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
         <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:spring" />
         <property name="username" value="system" />
-        <property name="password" value="passwordhere" />
+        <property name="password" value="apttus1234" />
         
        </bean>
 
@@ -62,9 +62,9 @@
         </property>
 
     </bean>
-        
-     
-     
+
+
+
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" >
         <property name="dataSource" ref="datasource"/>
         <property name="packagesToScan">
@@ -81,7 +81,7 @@
                 <prop key="hibernate.hbm2ddl.auto">create</prop>
 
             </props>
-        </property>       
+        </property>
     </bean>
  
     <!--<bean id="txManager"  class="org.springframework.orm.hibernate4.HibernateTransactionManager">-->
@@ -92,9 +92,9 @@
           class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
- 
+
     <bean id="persistenceExceptionTranslationPostProcessor"
-        class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+          class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
     <bean id="connectionFactoryLocator" class="org.springframework.social.connect.support.ConnectionFactoryRegistry">
         <property name="connectionFactories">
@@ -107,10 +107,10 @@
         </property>
     </bean>
     <bean id="tweeter" class="org.springframework.social.twitter.api.impl.TwitterTemplate">
-  <!--      <constructor-arg value="z8zTGKlBhIBK9Eanhr2ROJRWc" />
-        <constructor-arg value="tQ0QID5WJyILAQTd2k0tloXStvDhnrQyFI94ezYtDTCTRnHtHM" />
-        <constructor-arg value="1346371116-coFKpQKdVVNeb7sSG4ahMJelbypu3Pe50fzgN9s" />
-        <constructor-arg value="GWS4UosEsG5iK9zlP6vWkkqmJye3VteBuDIuQXtxINQV3" />-->
+        <!--      <constructor-arg value="z8zTGKlBhIBK9Eanhr2ROJRWc" />
+              <constructor-arg value="tQ0QID5WJyILAQTd2k0tloXStvDhnrQyFI94ezYtDTCTRnHtHM" />
+              <constructor-arg value="1346371116-coFKpQKdVVNeb7sSG4ahMJelbypu3Pe50fzgN9s" />
+              <constructor-arg value="GWS4UosEsG5iK9zlP6vWkkqmJye3VteBuDIuQXtxINQV3" />-->
 
         <constructor-arg value="${twitter.consumerKey}" />
         <constructor-arg value="${twitter.consumerSecret}" />
@@ -121,6 +121,5 @@
 
     <bean id="restTemplate" class="org.springframework.web.client.RestTemplate" >
     </bean>
-         
+
 </beans>
-   
