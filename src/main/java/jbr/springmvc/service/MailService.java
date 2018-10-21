@@ -5,17 +5,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 
 import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.util.concurrent.Future;
 
 public class MailService {
 
     @Autowired
     JavaMailSender mailSender;
 
-    public void sendEmail(Object object) {
+    @Async
+    public Future<String> sendEmail(Object object) {
 
         Entries entry = (Entries) object;
 
@@ -24,9 +28,11 @@ public class MailService {
         try {
             mailSender.send(preparator);
             System.out.println("Message Send...");
+            return new AsyncResult<String>("Mail sent sucessfully ");
         } catch (MailException ex) {
             System.err.println(ex.getMessage());
         }
+        return null;
     }
 
     private MimeMessagePreparator getMessagePreparator(final Entries entry) {

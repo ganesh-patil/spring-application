@@ -27,6 +27,7 @@
     <bean id="fileOperationsHiberService" class="jbr.springmvc.service.FileOperationsHiberService" />
     <bean id="userHiberDao" class="jbr.springmvc.dao.UserHiberDaoImpl" />
     <bean id="entriesDao" class="jbr.springmvc.dao.EntriesHiberDaoImpl" />
+    <bean id="entriesSpringDao" class="jbr.springmvc.dao.EntriesSpringDaoImpl" />
     <bean id="fileOperationsDao" class="jbr.springmvc.dao.FileOperationsHiberDaoImpl" />
     <bean id="entriesHiberService" class="jbr.springmvc.service.EntriesHiberService" />
     
@@ -77,6 +78,7 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">false</prop>
+                <!--<prop key="hibernate.current_session_context_class">thread</prop>-->
                 <!--<prop key="hibernate.hbm2ddl.auto">create</prop>-->
 
             </props>
@@ -85,6 +87,7 @@
  
     <bean id="txManager"  class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
+        <property name="dataSource" ref="datasource" />
     </bean>
  
     <bean id="persistenceExceptionTranslationPostProcessor"

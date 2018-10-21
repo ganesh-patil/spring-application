@@ -5,22 +5,25 @@ import jbr.springmvc.model.Entries;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+@Transactional
 
 public class EntriesHiberDaoImpl implements EntriesDao {
 
     @Autowired
     private SessionFactory sessionFactory;
     public List<Entries> getAllEntries() {
-        return sessionFactory.openSession().createQuery("from Entries ").list();
+        return sessionFactory.getCurrentSession()
+                .createQuery("from Entries ").list();
     }
 
     public void addEntry(Entries entry) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         session.persist(entry);
         session.flush();
-        session.close();
+        //session.close();
     }
 
     public void updateEntry(Entries entry){
