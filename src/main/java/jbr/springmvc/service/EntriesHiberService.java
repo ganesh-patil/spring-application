@@ -3,50 +3,58 @@ package jbr.springmvc.service;
 import jbr.springmvc.dao.EntriesDao;
 import jbr.springmvc.model.Entries;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
 public class EntriesHiberService {
 
     @Autowired
     private MailService mailService;
+//    @Qualifier("entriesDao")
     @Autowired
-    @Qualifier("entriesDao")
-    private EntriesDao entriesHiberDeo;
+    private EntriesDao entriesDao;
 
     public Entries getEntryById(int entryId){
 
-        return entriesHiberDeo.getEntryById(entryId);
+//        return entriesDao.getEntryById(entryId);
+          return entriesDao.findOne(entryId);
     }
     public List<Entries> getAllEntries() {
-        return entriesHiberDeo.getAllEntries();
+        return entriesDao.findAll();
     }
     @Transactional(propagation = Propagation.REQUIRED)
     public void addEntry(Entries entry) {
 //        DebugUtils.transactionRequired("EntriesHiberService.addEntry");
-        entriesHiberDeo.addEntry(entry);
+//        entriesDao.addEntry(entry);
 
 //        Entries en = new Entries();  enable to test transactions
 //        en.setTitle(null);
-//        entriesHiberDeo.addEntry(en);
+//        entriesDao.addEntry(en);
+
+        entriesDao.save(entry);
     }
 
     public void updateEntry(Entries entry){
-        entriesHiberDeo.updateEntry(entry);
+//        entriesDao.updateEntry(entry);
+        entriesDao.save(entry);
     }
 
     public void deleteEntry(int entryId){
-        entriesHiberDeo.deleteEntry(entryId);
+//      entryId  entriesDao.deleteEntry(entryId);
+        entriesDao.delete(entryId);
     }
 
 
 
     public void sendEntryDetails(Entries entry) {
-        mailService.sendEmail(entry);
+//        mailService.sendEmail(entry);
     }
+
+
 
 
 }

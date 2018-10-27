@@ -5,13 +5,14 @@ import jbr.springmvc.model.Entries;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Transactional
 
-public class EntriesSpringDaoImpl implements EntriesDao {
+public class EntriesSpringDaoImpl  {
 
 
     public List<Entries> getAllEntries() {
@@ -32,5 +33,14 @@ public class EntriesSpringDaoImpl implements EntriesDao {
 
     public void deleteEntry(int entryId) {
 
+    }
+
+
+    public List<Entries> findAll() {
+        return null;
+    }
+
+    public List<Entries> findAll(Sort sort) {
+        return null;
     }
 }

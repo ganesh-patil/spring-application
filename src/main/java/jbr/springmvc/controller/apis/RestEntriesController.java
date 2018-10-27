@@ -26,8 +26,6 @@ public class RestEntriesController {
         return entriesHiberService.getAllEntries();
     }
 
-
-
     @PostMapping
     public  Entries addEntry(@RequestBody Entries entry){
         entry.setId(0);
@@ -51,5 +49,10 @@ public class RestEntriesController {
         return  "Entry with id"+entryId+ "Deleted Successfully";
    }
 
+   @GetMapping("/{entryId}")
+    public Entries getEntry(@PathVariable int entryId){
+        Entries entry = entriesHiberService.getEntryById(entryId);
+        return entry;
+   }
 
 }
